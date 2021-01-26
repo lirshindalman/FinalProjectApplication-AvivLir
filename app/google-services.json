@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "253469872220",
+    "project_id": "myrecipes-edf38",
+    "storage_bucket": "myrecipes-edf38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253469872220:android:d3330a1f21c80f8b20d699",
+        "android_client_info": {
+          "package_name": "com.example.finalprojectapplication_avivlir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253469872220-ivkds0nrjlbtgr5khbfj7ttn0df622t2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeaPXjdQZpV_UgSBay7c-Nf6nRuHW4BsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253469872220-ivkds0nrjlbtgr5khbfj7ttn0df622t2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
