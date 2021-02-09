@@ -51,8 +51,13 @@ public class AddIngredientActivity extends ListActivity {
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v) {
-        listItems.add("Clicked : "+ ingredientText.getText());
+        listItems.add("" + ingredientText.getText());
+        ingredientText.setText("");
         adapter.notifyDataSetChanged();
+    }
+
+    public void nextBtn(View v){
+
     }
 
 }
