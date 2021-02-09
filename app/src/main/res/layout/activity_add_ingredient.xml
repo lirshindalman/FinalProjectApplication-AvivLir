@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/ingredientText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ></EditText>
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/addBtn"
-        android:text="Add New Item"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:onClick="addItems"/>
+
+        <Button
+            android:id="@+id/addBtn"
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addItems"/>
+
+        <EditText
+            android:id="@+id/ingredientText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            ></EditText>
+
+
+    </LinearLayout>
+
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="513dp"
         android:drawSelectorOnTop="false" />
+
+
     <Button
         android:id="@+id/nextBtn"
         android:text="next"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="nextBtn"/>
 
