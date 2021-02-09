@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.Gson;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -40,7 +41,6 @@ public class Upload_Recipe extends AppCompatActivity {
 
         recipeImage = (ImageView)findViewById(R.id.iv_foodImage);
         txt_name = (EditText)findViewById(R.id.txt_recipe_name);
-        txt_description = (EditText)findViewById(R.id.text_description);
         txt_price = (EditText)findViewById(R.id.text_price);
 
     }
@@ -83,7 +83,7 @@ public class Upload_Recipe extends AppCompatActivity {
                 while(!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
                 imageUrl = urlImage.toString();
-                uploadRecipe();
+                //uploadRecipe();
                 progressDialog.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -93,27 +93,27 @@ public class Upload_Recipe extends AppCompatActivity {
             }
         });
 
+        FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
+        Gson gson = new Gson();
+        String myJson = gson.toJson(foodData);
+        Intent i = new Intent(this, AddIngredientActivity.class);
+        i.putExtra("MyRecipe", myJson);
     }
 
 
     public void btnUploadRecipe(View view) {
-        startActivity(new Intent(this,AddIngredientActivity.class));
-//        Intent myIntent = new Intent(Upload_Recipe.this, AddIngredientActivity.class);
-//        startActivity(myIntent);
-        //uploadImage();
-
+        Intent myIntent = new Intent(Upload_Recipe.this, AddIngredientActivity.class);
+        startActivity(myIntent);
+        uploadImage();
     }
 
-    public void uploadRecipe(){
-
-
-
-        FoodData foodData = new FoodData(
-                txt_name.getText().toString(),
-                txt_description.getText().toString(),
-                txt_price.getText().toString(),
-                imageUrl
-        );
+    public void uploadRecipe(FoodData foodData){
+//        FoodData foodData = new FoodData(
+//                txt_name.getText().toString(),
+//                txt_description.getText().toString(),
+//                txt_price.getText().toString(),
+//                imageUrl
+//        );
 
         String myCurrentDateTime = DateFormat.getDateTimeInstance()
                 .format(Calendar.getInstance().getTime());

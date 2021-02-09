@@ -42,13 +42,12 @@ public class DetailActivity extends AppCompatActivity {
             key = mBundle.getString("keyValue");
             imageUrl = mBundle.getString("Image");
             RecipeName.setText(mBundle.getString("RecipeName"));
-            RecipePrice.setText(mBundle.getString("price"));
+            RecipePrice.setText(mBundle.getString("time"));
            // foodImage.setImageResource(mBundle.getInt("Image"));
 
             Glide.with(this)
                     .load(mBundle.getString("Image"))
                     .into(foodImage);
-
 
         }
 

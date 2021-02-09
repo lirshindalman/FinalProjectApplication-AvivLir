@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
@@ -57,7 +58,13 @@ public class AddIngredientActivity extends ListActivity {
     }
 
     public void nextBtn(View v){
+        Gson gson = new Gson();
+        FoodData foodData= gson.fromJson(getIntent().getStringExtra("MyRecipe"), FoodData.class);
+        foodData.setIngredient(listItems);
 
+        String myJson = gson.toJson(foodData);
+        Intent i = new Intent(this, AddDescriptionActivity.class);
+        i.putExtra("MyRecipe", myJson);
     }
 
 }

@@ -122,11 +122,9 @@ public class UpdateRecipeActivity extends AppCompatActivity {
     public void uploadRecipe(){
 
 
-
+// add ingredients and description
         FoodData foodData = new FoodData(
                recipename,
-                recipeDescription,
-                recipePrice,
                 imageUrl
         );
 

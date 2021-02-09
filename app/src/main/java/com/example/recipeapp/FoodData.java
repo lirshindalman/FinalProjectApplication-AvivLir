@@ -1,33 +1,33 @@
 package com.example.recipeapp;
 
+import java.util.ArrayList;
+
 public class FoodData {
 
     private String itemName;
-    private String itemDescription;
-    private String itemPrice;
+    private ArrayList<String> description;
+    private ArrayList<String> ingredient;
     private String itemImage;
     private String key;
 
     public FoodData() {
     }
-
-    public FoodData(String itemName, String itemDescription, String itemPrice, String itemImage) {
+    public FoodData(String itemName, String itemImage) {
         this.itemName = itemName;
-        this.itemDescription = itemDescription;
-        this.itemPrice = itemPrice;
         this.itemImage = itemImage;
     }
+
 
     public String getItemName() {
         return itemName;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public ArrayList<String> getDescription() {
+        return description;
     }
 
-    public String getItemPrice() {
-        return itemPrice;
+    public ArrayList<String> getIngredient() {
+        return ingredient;
     }
 
     public String getItemImage() {
@@ -40,5 +40,13 @@ public class FoodData {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public void setDescription(ArrayList<String> description) {
+        this.description = description;
+    }
+
+    public void setIngredient(ArrayList<String> ingredient) {
+        this.ingredient = ingredient;
     }
 }
