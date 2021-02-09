@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,18 +94,20 @@ public class Upload_Recipe extends AppCompatActivity {
             }
         });
 
-        FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
-        Gson gson = new Gson();
-        String myJson = gson.toJson(foodData);
-        Intent i = new Intent(this, AddIngredientActivity.class);
-        i.putExtra("MyRecipe", myJson);
+
+
     }
 
 
-    public void btnUploadRecipe(View view) {
-        Intent myIntent = new Intent(Upload_Recipe.this, AddIngredientActivity.class);
-        startActivity(myIntent);
-        uploadImage();
+    public void nextBtn(View view) {
+        Intent i = new Intent(this, AddIngredientActivity.class);
+        FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
+        Gson gson = new Gson();
+        String myJson = gson.toJson(foodData);
+        i.putExtra("MyRecipe", myJson);
+        startActivity(i);
+        //uploadImage();
+
     }
 
     public void uploadRecipe(FoodData foodData){

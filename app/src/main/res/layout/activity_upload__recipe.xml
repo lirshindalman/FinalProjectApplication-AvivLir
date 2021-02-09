@@ -56,7 +56,7 @@
             android:textSize="22sp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="#ffffff"
-            android:onClick="btnUploadRecipe"
+            android:onClick="nextBtn"
             />
 
     </LinearLayout>

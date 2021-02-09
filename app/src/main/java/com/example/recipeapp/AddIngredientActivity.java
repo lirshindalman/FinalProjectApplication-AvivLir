@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -61,10 +62,13 @@ public class AddIngredientActivity extends ListActivity {
         Gson gson = new Gson();
         FoodData foodData= gson.fromJson(getIntent().getStringExtra("MyRecipe"), FoodData.class);
         foodData.setIngredient(listItems);
-
+        Log.d("namne :",foodData.getItemName());
+        Log.d("listItems :",listItems.toString());
         String myJson = gson.toJson(foodData);
         Intent i = new Intent(this, AddDescriptionActivity.class);
         i.putExtra("MyRecipe", myJson);
+
+        startActivity(i);
     }
 
 }

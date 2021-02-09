@@ -15,8 +15,9 @@ public class FoodData {
     public FoodData(String itemName, String itemImage) {
         this.itemName = itemName;
         this.itemImage = itemImage;
+        this.ingredient = new ArrayList<String>();
+        this.description = new ArrayList<String>();
     }
-
 
     public String getItemName() {
         return itemName;
