@@ -1,11 +1,14 @@
 
  package com.example.recipeapp;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,22 +22,39 @@ import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
-    public class AddIngredientActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-        TextView foodDescription,RecipeName,RecipePrice;
-        ImageView foodImage;
-        String key="";
-        String imageUrl="";
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_add_ingredient);
+public class AddIngredientActivity extends ListActivity {
+    private EditText ingredientText;
 
 
-            }
+    //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
+    ArrayList<String> listItems=new ArrayList<String>();
+
+    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
+    ArrayAdapter<String> adapter;
 
 
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        setContentView(R.layout.activity_add_ingredient);
+
+        ingredientText = (EditText) findViewById(R.id.ingredientText);
+
+        adapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                listItems);
+        setListAdapter(adapter);
     }
+
+    //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
+    public void addItems(View v) {
+        listItems.add("Clicked : "+ ingredientText.getText());
+        adapter.notifyDataSetChanged();
+    }
+
+}
 
 
