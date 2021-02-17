@@ -19,6 +19,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".AddIngredientActivity" />
+        <activity android:name=".AddDescriptionActivity" />
+
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden">
