@@ -98,52 +98,10 @@ public class Upload_Recipe extends AppCompatActivity {
     public void nextBtn(View view) {
         //uploadImage();
         Intent addIngredient = new Intent(this, AddIngredientActivity.class);
-        //FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
-//        Gson gson = new Gson();
-//        String myJson = gson.toJson(foodData);
         Log.d("txt_name : ",txt_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
         startActivity(addIngredient);
-    }
-
-    public void uploadRecipe(FoodData foodData){
-//        FoodData foodData = new FoodData(
-//                txt_name.getText().toString(),
-//                txt_description.getText().toString(),
-//                txt_price.getText().toString(),
-//                imageUrl
-//        );
-
-        String myCurrentDateTime = DateFormat.getDateTimeInstance()
-                .format(Calendar.getInstance().getTime());
-
-        FirebaseDatabase.getInstance().getReference("Recipe")
-                .child(myCurrentDateTime).setValue(foodData).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful()){
-
-                    Toast.makeText(Upload_Recipe.this, "Recipe Uploaded", Toast.LENGTH_SHORT).show();
-
-                    finish();
-
-                }
-
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Upload_Recipe.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-
-
     }
 
 
