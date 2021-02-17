@@ -1,4 +1,4 @@
-package com.example.recipeapp;
+package com.example.finalprojectapplication_avivlir;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,8 +11,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.example.recipeapp.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

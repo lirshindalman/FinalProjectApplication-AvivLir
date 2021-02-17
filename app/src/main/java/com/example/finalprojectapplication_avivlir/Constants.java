@@ -1,4 +1,4 @@
-package com.example.recipeapp;
+package com.example.finalprojectapplication_avivlir;
 
 public class Constants {
     public static final String FOOD_DATA_NAME = "FoodDataNeme";

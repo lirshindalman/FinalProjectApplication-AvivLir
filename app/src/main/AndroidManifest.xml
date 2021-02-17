@@ -13,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".UpdateRecipeActivity"></activity>
+        <activity android:name="com.example.finalprojectapplication_avivlir.UpdateRecipeActivity"></activity>
         <activity
-            android:name=".Upload_Recipe"
+            android:name="com.example.finalprojectapplication_avivlir.Upload_Recipe"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".AddIngredientActivity" />
-        <activity android:name=".AddDescriptionActivity" />
+        <activity android:name="com.example.finalprojectapplication_avivlir.DetailActivity" />
+        <activity android:name="com.example.finalprojectapplication_avivlir.AddIngredientActivity" />
+        <activity android:name="com.example.finalprojectapplication_avivlir.AddDescriptionActivity" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.finalprojectapplication_avivlir.MainActivity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

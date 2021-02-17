@@ -1,11 +1,8 @@
-package com.example.recipeapp;
+package com.example.finalprojectapplication_avivlir;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,18 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.recipeapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.gson.Gson;
-
-import java.text.DateFormat;
-import java.util.Calendar;
 
 public class Upload_Recipe extends AppCompatActivity {
 
@@ -79,7 +71,6 @@ public class Upload_Recipe extends AppCompatActivity {
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while(!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
@@ -96,7 +87,7 @@ public class Upload_Recipe extends AppCompatActivity {
 
 
     public void nextBtn(View view) {
-        //uploadImage();
+        uploadImage();
         Intent addIngredient = new Intent(this, AddIngredientActivity.class);
         Log.d("txt_name : ",txt_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
