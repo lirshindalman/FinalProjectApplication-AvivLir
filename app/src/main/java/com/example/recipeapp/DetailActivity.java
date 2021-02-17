@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,32 +20,42 @@ import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
-public class DetailActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    TextView foodDescription,RecipeName,RecipePrice;
+public class DetailActivity extends AppCompatActivity {
+    TextView RecipeName;
     ImageView foodImage;
     String key="";
     String imageUrl="";
+    private ListView lv;
+    ArrayList<String> listItems=new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        lv = (ListView) findViewById(R.id.firstList);
         RecipeName = (TextView) findViewById(R.id.txtRecipeName);
-        RecipePrice = (TextView) findViewById(R.id.txtPrice);
-        foodDescription = (TextView)findViewById(R.id.txtDescription);
         foodImage = (ImageView)findViewById(R.id.ivImage2);
 
         Bundle mBundle = getIntent().getExtras();
 
         if(mBundle!=null){
 
-            foodDescription.setText(mBundle.getString("Description"));
             key = mBundle.getString("keyValue");
             imageUrl = mBundle.getString("Image");
             RecipeName.setText(mBundle.getString("RecipeName"));
-            RecipePrice.setText(mBundle.getString("time"));
            // foodImage.setImageResource(mBundle.getInt("Image"));
+            listItems = mBundle.getStringArrayList("list");
+
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    listItems);
+
+            lv.setAdapter(arrayAdapter);
 
             Glide.with(this)
                     .load(mBundle.getString("Image"))
@@ -52,6 +64,14 @@ public class DetailActivity extends AppCompatActivity {
         }
 
     }
+
+
+
+
+
+
+
+
 
     public void btnDeleteRecipe(View view) {
 
@@ -83,8 +103,6 @@ public class DetailActivity extends AppCompatActivity {
 
         startActivity(new Intent(getApplicationContext(),UpdateRecipeActivity.class)
         .putExtra("recipeNameKey",RecipeName.getText().toString())
-        .putExtra("descriptionKey",foodDescription.getText().toString())
-                .putExtra("priceKey",RecipePrice.getText().toString())
         .putExtra("oldimageUrl",imageUrl)
                 .putExtra("key",key)
         );

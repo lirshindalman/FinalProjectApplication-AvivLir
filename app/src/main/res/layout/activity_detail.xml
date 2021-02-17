@@ -24,27 +24,13 @@
         android:textStyle="bold"
         android:id="@+id/txtRecipeName"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="Description"
-        android:textSize="22sp"
-        android:id="@+id/txtDescription"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:text="Price"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="27sp"
-        android:textStyle="bold|italic"
-        android:gravity="end"
-        android:id="@+id/txtPrice"
-        />
+
+    <ListView
+        android:id="@+id/firstList"
+        android:layout_width="fill_parent"
+        android:layout_height="350dp"
+        android:drawSelectorOnTop="false" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
