@@ -14,7 +14,7 @@ public class AddDescriptionActivity extends ListActivity {
 
 
     //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
-    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayList<String> descriptionList=new ArrayList<String>();
 
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<String> adapter;
@@ -30,25 +30,27 @@ public class AddDescriptionActivity extends ListActivity {
 
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                listItems);
+                descriptionList);
         setListAdapter(adapter);
     }
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v) {
-        listItems.add("" + descriptionText.getText());
+        descriptionList.add("" + descriptionText.getText());
         descriptionText.setText("");
         adapter.notifyDataSetChanged();
     }
 
     public void finishBtn(View v){
-        Gson gson = new Gson();
-        FoodData foodData= gson.fromJson(getIntent().getStringExtra("MyRecipe"), FoodData.class);
-        foodData.setDescription(listItems);
+        String itemName = getIntent().getStringExtra(Constants.FOOD_DATA_NAME);
+        String itemImage = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
+        ArrayList<String> ingredients = getIntent().getStringArrayListExtra(Constants.FOOD_DATA_INGRIDIENTS);
 
+        FoodData foodData= new FoodData(itemName ,itemImage,ingredients, descriptionList);
+        Gson gson = new Gson();
         String myJson = gson.toJson(foodData);
         Intent i = new Intent(this, DetailActivity.class);
-        i.putExtra("MyRecipe", myJson);
+        i.putExtra(Constants.FOOD_DATA, myJson);
 
         startActivity(new Intent(AddDescriptionActivity.this, MainActivity.class));
     }

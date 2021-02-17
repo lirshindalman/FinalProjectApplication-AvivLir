@@ -31,8 +31,8 @@ public class Upload_Recipe extends AppCompatActivity {
 
     ImageView recipeImage;
     Uri uri;
-    EditText txt_name,txt_description,txt_price;
-    String imageUrl;
+    EditText txt_name,txt_price;
+    String imageUrl = "";
     private Button switch_activity;
 
     @Override
@@ -84,7 +84,6 @@ public class Upload_Recipe extends AppCompatActivity {
                 while(!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
                 imageUrl = urlImage.toString();
-                //uploadRecipe();
                 progressDialog.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -93,21 +92,19 @@ public class Upload_Recipe extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
-
-
-
     }
 
 
     public void nextBtn(View view) {
-        Intent i = new Intent(this, AddIngredientActivity.class);
-        FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
-        Gson gson = new Gson();
-        String myJson = gson.toJson(foodData);
-        i.putExtra("MyRecipe", myJson);
-        startActivity(i);
-        //uploadImage();
-
+        uploadImage();
+        Intent addDescriptionActivity = new Intent(this, AddDescriptionActivity.class);
+        //FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
+//        Gson gson = new Gson();
+//        String myJson = gson.toJson(foodData);
+        addDescriptionActivity.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
+        addDescriptionActivity.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
+        Intent addIngredient = new Intent(this, AddIngredientActivity.class);
+        startActivity(addIngredient);
     }
 
     public void uploadRecipe(FoodData foodData){

@@ -12,11 +12,11 @@ public class FoodData {
 
     public FoodData() {
     }
-    public FoodData(String itemName, String itemImage) {
+    public FoodData(String itemName, String itemImage,ArrayList<String> ingredients,ArrayList<String> description ) {
         this.itemName = itemName;
         this.itemImage = itemImage;
-        this.ingredient = new ArrayList<String>();
-        this.description = new ArrayList<String>();
+        this.ingredient = ingredients;
+        this.description = description;
     }
 
     public String getItemName() {

@@ -59,16 +59,15 @@ public class AddIngredientActivity extends ListActivity {
     }
 
     public void nextBtn(View v){
-        Gson gson = new Gson();
-        FoodData foodData= gson.fromJson(getIntent().getStringExtra("MyRecipe"), FoodData.class);
-        foodData.setIngredient(listItems);
-        Log.d("namne :",foodData.getItemName());
-        Log.d("listItems :",listItems.toString());
-        String myJson = gson.toJson(foodData);
-        Intent i = new Intent(this, AddDescriptionActivity.class);
-        i.putExtra("MyRecipe", myJson);
-
-        startActivity(i);
+        //Gson gson = new Gson();
+//        FoodData foodData= gson.fromJson(getIntent().getStringExtra("MyRecipe"), FoodData.class);
+//        foodData.setIngredient(listItems);
+//        Log.d("namne :",foodData.getItemName());
+//        Log.d("listItems :",listItems.toString());
+//        String myJson = gson.toJson(foodData);
+        Intent addDescriptionActivity = new Intent(this, AddDescriptionActivity.class);
+        addDescriptionActivity.putExtra(Constants.FOOD_DATA_INGRIDIENTS, listItems);
+        startActivity(addDescriptionActivity);
     }
 
 }
