@@ -96,14 +96,14 @@ public class Upload_Recipe extends AppCompatActivity {
 
 
     public void nextBtn(View view) {
-        uploadImage();
-        Intent addDescriptionActivity = new Intent(this, AddDescriptionActivity.class);
+        //uploadImage();
+        Intent addIngredient = new Intent(this, AddIngredientActivity.class);
         //FoodData foodData = new FoodData(txt_name.getText().toString(), imageUrl);
 //        Gson gson = new Gson();
 //        String myJson = gson.toJson(foodData);
-        addDescriptionActivity.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
-        addDescriptionActivity.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
-        Intent addIngredient = new Intent(this, AddIngredientActivity.class);
+        Log.d("txt_name : ",txt_name.getText().toString());
+        addIngredient.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
+        addIngredient.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
         startActivity(addIngredient);
     }
 

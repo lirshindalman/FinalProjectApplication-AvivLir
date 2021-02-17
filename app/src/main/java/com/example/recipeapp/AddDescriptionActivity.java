@@ -3,6 +3,7 @@ package com.example.recipeapp;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -42,15 +43,21 @@ public class AddDescriptionActivity extends ListActivity {
     }
 
     public void finishBtn(View v){
-        String itemName = getIntent().getStringExtra(Constants.FOOD_DATA_NAME);
-        String itemImage = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
-        ArrayList<String> ingredients = getIntent().getStringArrayListExtra(Constants.FOOD_DATA_INGRIDIENTS);
+        Log.d("descriptionList: ", descriptionList.toString());
+        ArrayList<String> ingredients;
+        ingredients = getIntent().getStringArrayListExtra(Constants.FOOD_DATA_INGRIDIENTS);
+        Log.d("ingredients: ", ingredients.toString());
 
-        FoodData foodData= new FoodData(itemName ,itemImage,ingredients, descriptionList);
+        String itemName = getIntent().getStringExtra(Constants.FOOD_DATA_NAME);
+        Log.d("itemName: ", itemName);
+        String itemImageUrl = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
+        Log.d("itemImage: ", itemImageUrl);
+
+        FoodData foodData= new FoodData(itemName ,itemImageUrl,ingredients, descriptionList);
         Gson gson = new Gson();
         String myJson = gson.toJson(foodData);
-        Intent i = new Intent(this, DetailActivity.class);
-        i.putExtra(Constants.FOOD_DATA, myJson);
+        Intent detailActivity = new Intent(this, DetailActivity.class);
+        detailActivity.putExtra(Constants.FOOD_DATA, myJson);
 
         startActivity(new Intent(AddDescriptionActivity.this, MainActivity.class));
     }

@@ -31,7 +31,7 @@ public class AddIngredientActivity extends ListActivity {
 
 
     //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
-    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayList<String> ingredientList=new ArrayList<String>();
 
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<String> adapter;
@@ -47,13 +47,13 @@ public class AddIngredientActivity extends ListActivity {
 
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                listItems);
+                ingredientList);
         setListAdapter(adapter);
     }
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v) {
-        listItems.add("" + ingredientText.getText());
+        ingredientList.add("" + ingredientText.getText());
         ingredientText.setText("");
         adapter.notifyDataSetChanged();
     }
@@ -65,8 +65,13 @@ public class AddIngredientActivity extends ListActivity {
 //        Log.d("namne :",foodData.getItemName());
 //        Log.d("listItems :",listItems.toString());
 //        String myJson = gson.toJson(foodData);
+        String itemName = getIntent().getStringExtra(Constants.FOOD_DATA_NAME);
+        String itemImageUrl = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
         Intent addDescriptionActivity = new Intent(this, AddDescriptionActivity.class);
-        addDescriptionActivity.putExtra(Constants.FOOD_DATA_INGRIDIENTS, listItems);
+        Log.d("ingredientList" ,ingredientList.toString());
+        addDescriptionActivity.putExtra(Constants.FOOD_DATA_INGRIDIENTS, ingredientList);
+        addDescriptionActivity.putExtra(Constants.FOOD_DATA_NAME, itemName);
+        addDescriptionActivity.putExtra(Constants.FOOD_DATA_IMAGE_URL, itemImageUrl);
         startActivity(addDescriptionActivity);
     }
 

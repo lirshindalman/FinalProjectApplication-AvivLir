@@ -123,10 +123,7 @@ public class UpdateRecipeActivity extends AppCompatActivity {
 
 
 // add ingredients and description
-        FoodData foodData = new FoodData(
-               recipename,
-                imageUrl
-        );
+        FoodData foodData = new FoodData();
 
 
        databaseReference.setValue(foodData).addOnCompleteListener(new OnCompleteListener<Void>() {
