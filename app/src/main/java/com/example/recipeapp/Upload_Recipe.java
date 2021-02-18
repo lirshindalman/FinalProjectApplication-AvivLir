@@ -26,7 +26,7 @@ public class Upload_Recipe extends AppCompatActivity {
     ImageView recipeImage;
     Uri uri;
     EditText txt_name,txt_price;
-    String imageUrl = "";
+    String imageUrl="";
     private Button switch_activity;
 
     @Override
@@ -58,11 +58,9 @@ public class Upload_Recipe extends AppCompatActivity {
 
         }
         else Toast.makeText(this, "You haven't picked image", Toast.LENGTH_SHORT).show();
-
     }
 
     public void uploadImage(){
-
         StorageReference storageReference = FirebaseStorage.getInstance()
                 .getReference().child("RecipeImage").child(uri.getLastPathSegment());
 
@@ -73,10 +71,20 @@ public class Upload_Recipe extends AppCompatActivity {
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while(!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
-                imageUrl = urlImage.toString();
+                if (urlImage == null ){
+                    Log.d("image url is ", "nulll");
+                    imageUrl ="";
+                }
+                else{
+                    imageUrl = urlImage.toString();
+
+                }
+                Log.d("image url is not null ", imageUrl);
+                continueToIngredient();
                 progressDialog.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -85,14 +93,20 @@ public class Upload_Recipe extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
+
     }
 
 
     public void nextBtn(View view) {
         uploadImage();
+    }
+
+    public void continueToIngredient(){
         Intent addIngredient = new Intent(this, AddIngredientActivity.class);
         addIngredient.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
+        Log.d("name is: ", txt_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
+        Log.d("image url is: ", imageUrl);
         startActivity(addIngredient);
     }
 
