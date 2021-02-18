@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class AddDescriptionActivity extends ListActivity {
     private EditText descriptionText;
     private FoodData foodData;
-
+    private int timer = 0 ;
 
     //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
     ArrayList<String> descriptionList=new ArrayList<String>();
@@ -64,7 +64,7 @@ public class AddDescriptionActivity extends ListActivity {
         String itemImageUrl = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
         Log.d("itemImage: ", itemImageUrl);
 
-        foodData= new FoodData(itemName ,itemImageUrl,ingredients, descriptionList);
+        foodData= new FoodData(itemName ,itemImageUrl,ingredients, descriptionList, timer);
         Gson gson = new Gson();
         String myJson = gson.toJson(foodData);
         Intent detailActivity = new Intent(this, DetailActivity.class);

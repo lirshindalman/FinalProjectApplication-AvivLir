@@ -9,14 +9,16 @@ public class FoodData {
     private ArrayList<String> ingredient;
     private String itemImage;
     private String key;
+    private int timer;
 
     public FoodData() {
     }
-    public FoodData(String itemName, String itemImage,ArrayList<String> ingredients,ArrayList<String> description ) {
+    public FoodData(String itemName, String itemImage,ArrayList<String> ingredients,ArrayList<String> description, int timer) {
         this.itemName = itemName;
         this.itemImage = itemImage;
         this.ingredient = ingredients;
         this.description = description;
+        this.timer = timer;
     }
 
     public String getItemName() {
