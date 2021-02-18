@@ -1,5 +1,5 @@
 
- package com.example.finalprojectapplication_avivlir;
+ package com.example.recipeapp;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-
-import com.example.recipeapp.R;
 
 import java.util.ArrayList;
 

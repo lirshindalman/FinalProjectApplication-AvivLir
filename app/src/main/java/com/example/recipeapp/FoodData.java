@@ -1,4 +1,4 @@
-package com.example.finalprojectapplication_avivlir;
+package com.example.recipeapp;
 
 import java.util.ArrayList;
 

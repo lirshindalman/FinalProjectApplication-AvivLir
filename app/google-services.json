@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "212281396864",
-    "firebase_url": "https://fir-project-c6cd7.firebaseio.com",
-    "project_id": "fir-project-c6cd7",
-    "storage_bucket": "fir-project-c6cd7.appspot.com"
+    "project_number": "253469872220",
+    "firebase_url": "https://myrecipes-edf38-default-rtdb.firebaseio.com",
+    "project_id": "myrecipes-edf38",
+    "storage_bucket": "myrecipes-edf38.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:212281396864:android:224d8152642cde27",
+        "mobilesdk_app_id": "1:253469872220:android:529c32f44680faf620d699",
         "android_client_info": {
           "package_name": "com.example.recipeapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "212281396864-9eks1t2reeu0q2e1tj7ve3th6a7r1c0r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.recipeapp",
-            "certificate_hash": "54f2463544dc66d8da55def197bdb5c73817bdf1"
-          }
-        },
-        {
-          "client_id": "212281396864-mf7lk43pueqlhogufqha1g97jhkdhag8.apps.googleusercontent.com",
+          "client_id": "253469872220-ivkds0nrjlbtgr5khbfj7ttn0df622t2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCi7HADFS445Xgf9fLIZckq6926Vsi8koA"
+          "current_key": "AIzaSyCeaPXjdQZpV_UgSBay7c-Nf6nRuHW4BsI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "212281396864-mf7lk43pueqlhogufqha1g97jhkdhag8.apps.googleusercontent.com",
+              "client_id": "253469872220-ivkds0nrjlbtgr5khbfj7ttn0df622t2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

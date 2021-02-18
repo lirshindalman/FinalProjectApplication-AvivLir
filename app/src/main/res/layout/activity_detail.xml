@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.finalprojectapplication_avivlir.DetailActivity">
+    tools:context="com.example.recipeapp.DetailActivity">
 
     <ImageView
         android:layout_width="match_parent"

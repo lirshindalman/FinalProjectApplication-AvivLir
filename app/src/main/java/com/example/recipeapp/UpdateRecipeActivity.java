@@ -1,4 +1,4 @@
-package com.example.finalprojectapplication_avivlir;
+package com.example.recipeapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.recipeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

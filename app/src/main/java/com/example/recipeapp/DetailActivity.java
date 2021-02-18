@@ -1,4 +1,4 @@
-package com.example.finalprojectapplication_avivlir;
+package com.example.recipeapp;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
-import com.example.recipeapp.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

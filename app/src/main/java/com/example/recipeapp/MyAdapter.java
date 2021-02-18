@@ -1,4 +1,4 @@
-package com.example.finalprojectapplication_avivlir;
+package com.example.recipeapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.recipeapp.R;
 
 import java.util.ArrayList;
 import java.util.List;

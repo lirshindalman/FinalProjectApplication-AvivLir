@@ -1,9 +1,12 @@
-package com.example.finalprojectapplication_avivlir;
+package com.example.recipeapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.recipeapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -89,11 +91,11 @@ public class Upload_Recipe extends AppCompatActivity {
     public void nextBtn(View view) {
         uploadImage();
         Intent addIngredient = new Intent(this, AddIngredientActivity.class);
-        Log.d("txt_name : ",txt_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
         startActivity(addIngredient);
     }
+
 
 
 }
