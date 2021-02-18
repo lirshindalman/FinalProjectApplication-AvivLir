@@ -23,8 +23,11 @@ public class DetailActivity extends AppCompatActivity {
     ImageView foodImage;
     String key="";
     String imageUrl="";
-    private ListView lv;
-    ArrayList<String> listItems=new ArrayList<String>();
+    private ListView ingredientList;
+    private ListView descriptionList;
+
+    ArrayList<String> firstListItems =new ArrayList<String>();
+    ArrayList<String> secondListItems =new ArrayList<String>();
 
 
 
@@ -32,9 +35,10 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        lv = (ListView) findViewById(R.id.firstList);
+        ingredientList = (ListView) findViewById(R.id.firstList);
+        descriptionList = (ListView) findViewById(R.id.secondList);
         RecipeName = (TextView) findViewById(R.id.txtRecipeName);
-        foodImage = (ImageView)findViewById(R.id.ivImage2);
+        //foodImage = (ImageView)findViewById(R.id.ivImage2);
 
         Bundle mBundle = getIntent().getExtras();
 
@@ -43,19 +47,29 @@ public class DetailActivity extends AppCompatActivity {
             key = mBundle.getString("keyValue");
             imageUrl = mBundle.getString("Image");
             RecipeName.setText(mBundle.getString("RecipeName"));
-           // foodImage.setImageResource(mBundle.getInt("Image"));
-            listItems = mBundle.getStringArrayList("list");
+            //foodImage.setImageResource(mBundle.getInt("Image"));
+            firstListItems = mBundle.getStringArrayList("list1");
+            secondListItems = mBundle.getStringArrayList("list2");
+
 
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     this,
                     android.R.layout.simple_list_item_1,
-                    listItems);
+                    firstListItems);
 
-            lv.setAdapter(arrayAdapter);
+            ingredientList.setAdapter(arrayAdapter);
 
-            Glide.with(this)
-                    .load(mBundle.getString("Image"))
-                    .into(foodImage);
+
+            ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    secondListItems);
+
+            descriptionList.setAdapter(arrayAdapter2);
+
+           // Glide.with(this)
+            //        .load(mBundle.getString("Image"))
+            //        .into(foodImage);
 
         }
 

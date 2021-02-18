@@ -7,28 +7,47 @@
     android:orientation="vertical"
     tools:context="com.example.recipeapp.DetailActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/ivImage2"
-        android:src="@drawable/image"
-        android:scaleType="centerCrop"
-        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
         android:text="Recipe Name"
         android:textSize="30sp"
         android:textStyle="bold"
         android:id="@+id/txtRecipeName"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Ingredients:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
     <ListView
         android:id="@+id/firstList"
         android:layout_width="fill_parent"
-        android:layout_height="350dp"
+        android:layout_height="200dp"
+        android:drawSelectorOnTop="false" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Descriptions:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <ListView
+        android:id="@+id/secondList"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
         android:drawSelectorOnTop="false" />
 
     <RelativeLayout
