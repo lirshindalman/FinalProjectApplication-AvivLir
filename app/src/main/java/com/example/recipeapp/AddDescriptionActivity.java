@@ -23,6 +23,7 @@ import java.util.Calendar;
 
 public class AddDescriptionActivity extends ListActivity {
     private EditText descriptionText;
+    private EditText timerText;
     private FoodData foodData;
     private int timer = 0 ;
 
@@ -40,7 +41,7 @@ public class AddDescriptionActivity extends ListActivity {
         setContentView(R.layout.activity_add_description);
 
         descriptionText = (EditText) findViewById(R.id.descriptionText);
-
+        timerText = (EditText) findViewById(R.id.timerText);
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 descriptionList);
@@ -51,6 +52,13 @@ public class AddDescriptionActivity extends ListActivity {
     public void addItems(View v) {
         descriptionList.add("" + descriptionText.getText());
         descriptionText.setText("");
+        adapter.notifyDataSetChanged();
+    }
+
+    public void addTimer(View v) {
+        Log.d("timer is: ", String.valueOf(timerText.getText()));
+        timer = Integer.parseInt(""+timerText.getText()) * 60;
+        timerText.setText("Timer set to "+timerText.getText()+" minuts");
         adapter.notifyDataSetChanged();
     }
 

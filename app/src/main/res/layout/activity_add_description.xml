@@ -6,43 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:text="Recipe Description"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/addBtn"
-            android:text="Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="addItems"/>
-
-        <EditText
-            android:id="@+id/descriptionText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            ></EditText>
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="450dp"
-        android:drawSelectorOnTop="false" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
 
@@ -55,12 +31,44 @@
 
         <EditText
             android:id="@+id/timerText"
+            android:hint="Enter time in minuts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             ></EditText>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="addItems"/>
+
+        <EditText
+            android:id="@+id/descriptionText"
+            android:hint="Enter Instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            ></EditText>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        android:drawSelectorOnTop="false" />
+
     <Button
         android:text="finish"
         android:layout_width="wrap_content"

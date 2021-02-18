@@ -50,21 +50,31 @@
         android:layout_height="200dp"
         android:drawSelectorOnTop="false" />
 
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/timer_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Start timer"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+        android:layout_margin="20dp"
+        android:onClick="startTimer"/>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
-        <Button
-            android:id="@+id/btnUpdate"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="Update"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
-            android:onClick="btnUpdateRecipe"
-            />
+
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="120dp"
@@ -80,6 +90,20 @@
             />
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="btnUpdateRecipe"
+        android:text="Update"
+        android:textColor="#ffffff"
+        android:textSize="22sp" />
 
 
 </LinearLayout>

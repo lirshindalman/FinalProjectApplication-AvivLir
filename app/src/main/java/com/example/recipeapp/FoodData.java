@@ -37,9 +37,9 @@ public class FoodData {
         return itemImage;
     }
 
-    public String getKey() {
-        return key;
-    }
+    public String getKey() { return key; }
+
+    public int getTimer() { return timer; }
 
     public void setKey(String key) {
         this.key = key;
