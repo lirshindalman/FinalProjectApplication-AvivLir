@@ -25,7 +25,7 @@ public class Upload_Recipe extends AppCompatActivity {
 
     ImageView recipeImage;
     Uri uri;
-    EditText txt_name,txt_price;
+    EditText txt_name;
     String imageUrl="";
     private Button switch_activity;
 
@@ -36,7 +36,6 @@ public class Upload_Recipe extends AppCompatActivity {
 
         recipeImage = (ImageView)findViewById(R.id.iv_foodImage);
         txt_name = (EditText)findViewById(R.id.txt_recipe_name);
-        txt_price = (EditText)findViewById(R.id.text_price);
 
     }
 
@@ -64,9 +63,9 @@ public class Upload_Recipe extends AppCompatActivity {
         StorageReference storageReference = FirebaseStorage.getInstance()
                 .getReference().child("RecipeImage").child(uri.getLastPathSegment());
 
-         final ProgressDialog progressDialog = new ProgressDialog(this);
-         progressDialog.setMessage("Recipe Uplading....");
-       // progressDialog.show();
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Recipe Uplading....");
+        //progressDialog.show();
 
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override

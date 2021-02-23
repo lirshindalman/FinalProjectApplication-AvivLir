@@ -100,17 +100,11 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void startTimer(View view){
+        Log.d("timer is :", ""+timer);
         reverseTimer(timer, (TextView)findViewById(R.id.timer_text));
     }
 
-    public void btnUpdateRecipe(View view) {
-        startActivity(new Intent(getApplicationContext(),UpdateRecipeActivity.class)
-        .putExtra("recipeNameKey",RecipeName.getText().toString())
-        .putExtra("oldimageUrl",imageUrl)
-                .putExtra("key",key)
-        );
 
-    }
 
     public void reverseTimer(int Seconds,final TextView tv){
 
