@@ -58,7 +58,7 @@ public class AddDescriptionActivity extends ListActivity {
     public void addTimer(View v) {
         Log.d("timer is: ", String.valueOf(timerText.getText()));
         timer = Integer.parseInt(""+timerText.getText()) * 60;
-        timerText.setText("Timer set to "+timerText.getText()+" minuts");
+        timerText.setText("Timer set to "+timerText.getText()+" minutes");
         adapter.notifyDataSetChanged();
     }
 

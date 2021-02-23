@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.recipeapp.SplashActivity">
+
+
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/splash_IMG_imageDisplay"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp" />
+
+        <TextView
+            android:id="@+id/splash_LBL_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/splash_IMG_imageDisplay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:shadowColor="#000000"
+            android:shadowDx="8"
+            android:shadowDy="8"
+            android:shadowRadius="3"
+            android:text="hello"
+            android:textColor="#293680"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            android:transitionName="logo_text" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

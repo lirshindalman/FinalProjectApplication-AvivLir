@@ -20,10 +20,10 @@
         <activity android:name=".DetailActivity" />
         <activity android:name=".AddIngredientActivity" />
         <activity android:name=".AddDescriptionActivity" />
+        <activity android:name=".MainActivity" />
 
-        <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden">
+        <activity android:name=".SplashActivity">
+        android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
