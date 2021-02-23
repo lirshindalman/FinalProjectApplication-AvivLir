@@ -22,21 +22,25 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/ingredientText"
+            android:hint="Enter Ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            ></EditText>
 
         <Button
             android:id="@+id/addBtn"
             android:text="Add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="#ffffff"
             android:layout_margin="10dp"
             android:onClick="addItems"/>
 
-        <EditText
-            android:id="@+id/ingredientText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            ></EditText>
+
 
 
     </LinearLayout>
@@ -48,15 +52,29 @@
         android:layout_height="400dp"
         android:drawSelectorOnTop="false" />
 
-
-    <Button
-        android:id="@+id/nextBtn"
-        android:text="next"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_alignParentBottom="true"
-        android:onClick="nextBtn"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/nextBtn"
+            android:text="next"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="nextBtn"/>
+
+        />
+    </LinearLayout>
 
 </LinearLayout>
 
