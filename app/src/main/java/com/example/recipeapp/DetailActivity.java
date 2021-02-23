@@ -76,10 +76,6 @@ public class DetailActivity extends AppCompatActivity {
             seconds = seconds % 60;
             tv.setText("TIME : " + String.format("%02d", minutes)
                     + ":" + String.format("%02d", seconds));
-           // Glide.with(this)
-            //        .load(mBundle.getString("Image"))
-            //        .into(foodImage);
-
         }
 
     }
@@ -99,7 +95,6 @@ public class DetailActivity extends AppCompatActivity {
                 Toast.makeText(DetailActivity.this, "Recipe Deleted", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
-
             }
         });
 

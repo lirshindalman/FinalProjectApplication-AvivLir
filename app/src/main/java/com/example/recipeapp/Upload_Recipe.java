@@ -1,5 +1,6 @@
 package com.example.recipeapp;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -63,14 +65,12 @@ public class Upload_Recipe extends AppCompatActivity {
         try {
             imageUrl = "";
             continueToIngredient();
-
-
             StorageReference storageReference = FirebaseStorage.getInstance()
                     .getReference().child("RecipeImage").child(uri.getLastPathSegment());
 
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Recipe Uplading....");
-            //progressDialog.show();
+            progressDialog.setMessage("Image Uplading....");
+            progressDialog.show();
 
             storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -99,10 +99,26 @@ public class Upload_Recipe extends AppCompatActivity {
             });
         }catch (Exception e){
             imageUrl = "";
+//            TextView alert = (EditText) findViewById(R.id.descriptionText);
+//            showAlertDialogButtonClicked(alert);
             continueToIngredient();
         }
     }
 
+//    public void showAlertDialogButtonClicked(View view) {
+//
+//        // setup the alert builder
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("My title");
+//        builder.setMessage("This is my message.");
+//
+//        // add a button
+//        builder.setPositiveButton("OK", null);
+//
+//        // create and show the alert dialog
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//    }
 
     public void nextBtn(View view) {
         uploadImage();
