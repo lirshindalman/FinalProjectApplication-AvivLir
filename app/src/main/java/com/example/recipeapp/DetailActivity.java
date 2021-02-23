@@ -100,8 +100,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void startTimer(View view){
-        Log.d("timer is :", ""+timer);
-        reverseTimer(3600, (TextView)findViewById(R.id.timer_text));
+        reverseTimer(timer, (TextView)findViewById(R.id.timer_text));
     }
 
     public void btnUpdateRecipe(View view) {
