@@ -63,6 +63,9 @@ public class AddDescriptionActivity extends ListActivity {
     }
 
     public void finishBtn(View v){
+        if(descriptionList.isEmpty()){
+            descriptionList.add("");
+        }
         Log.d("descriptionList: ", descriptionList.toString());
         ArrayList<String> ingredients;
         ingredients = getIntent().getStringArrayListExtra(Constants.FOOD_DATA_INGRIDIENTS);

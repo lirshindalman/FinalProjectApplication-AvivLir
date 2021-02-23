@@ -12,33 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Recipe Description"
+        android:text="Descriptions"
         android:textSize="30sp"
         android:textStyle="bold"
         />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
 
-
-        <Button
-            android:text="Add Timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="addTimer"/>
-
-        <EditText
-            android:id="@+id/timerText"
-            android:hint="Enter time in minuts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            ></EditText>
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,6 +48,29 @@
         android:layout_height="400dp"
         android:drawSelectorOnTop="false" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:text="Add Timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="addTimer"/>
+
+        <EditText
+            android:id="@+id/timerText"
+            android:hint="Enter time in minutes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            ></EditText>
+
+    </LinearLayout>
     <Button
         android:text="finish"
         android:layout_width="wrap_content"

@@ -27,8 +27,9 @@ public class DetailActivity extends AppCompatActivity {
     private String imageUrl="";
     private ListView ingredientList;
     private ListView descriptionList;
+    private TextView tv;
     private int timer;
-
+    private CountDownTimer countTimer;
     ArrayList<String> firstListItems =new ArrayList<String>();
     ArrayList<String> secondListItems =new ArrayList<String>();
 
@@ -41,6 +42,7 @@ public class DetailActivity extends AppCompatActivity {
         ingredientList = (ListView) findViewById(R.id.firstList);
         descriptionList = (ListView) findViewById(R.id.secondList);
         RecipeName = (TextView) findViewById(R.id.txtRecipeName);
+        tv = (TextView) findViewById(R.id.txtTimer);
         //foodImage = (ImageView)findViewById(R.id.ivImage2);
         Bundle mBundle = getIntent().getExtras();
 
@@ -68,7 +70,12 @@ public class DetailActivity extends AppCompatActivity {
                     secondListItems);
 
             descriptionList.setAdapter(arrayAdapter2);
-
+            int millisUntilFinished = timer * 1000;
+            int seconds = (int) (millisUntilFinished / 1000);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+            tv.setText("TIME : " + String.format("%02d", minutes)
+                    + ":" + String.format("%02d", seconds));
            // Glide.with(this)
             //        .load(mBundle.getString("Image"))
             //        .into(foodImage);
@@ -101,12 +108,12 @@ public class DetailActivity extends AppCompatActivity {
 
     public void startTimer(View view){
         Log.d("timer is :", ""+timer);
-        reverseTimer(timer, (TextView)findViewById(R.id.timer_text));
+        reverseTimer(timer);
     }
 
 
 
-    public void reverseTimer(int Seconds,final TextView tv){
+    public void reverseTimer(int Seconds){
 
         new CountDownTimer(Seconds* 1000+1000, 1000) {
 

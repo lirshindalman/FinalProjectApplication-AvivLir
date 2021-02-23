@@ -45,12 +45,9 @@ public class AddIngredientActivity extends ListActivity {
     }
 
     public void nextBtn(View v){
-        //Gson gson = new Gson();
-//        FoodData foodData= gson.fromJson(getIntent().getStringExtra("MyRecipe"), FoodData.class);
-//        foodData.setIngredient(listItems);
-//        Log.d("namne :",foodData.getItemName());
-//        Log.d("listItems :",listItems.toString());
-//        String myJson = gson.toJson(foodData);
+        if(ingredientList.isEmpty()){
+            ingredientList.add("");
+        }
         String itemName = getIntent().getStringExtra(Constants.FOOD_DATA_NAME);
         String itemImageUrl = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
         Intent addDescriptionActivity = new Intent(this, AddDescriptionActivity.class);

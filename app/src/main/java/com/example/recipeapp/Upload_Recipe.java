@@ -60,39 +60,47 @@ public class Upload_Recipe extends AppCompatActivity {
     }
 
     public void uploadImage(){
-        StorageReference storageReference = FirebaseStorage.getInstance()
-                .getReference().child("RecipeImage").child(uri.getLastPathSegment());
+        try {
+            imageUrl = "";
+            continueToIngredient();
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Recipe Uplading....");
-        //progressDialog.show();
 
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            StorageReference storageReference = FirebaseStorage.getInstance()
+                    .getReference().child("RecipeImage").child(uri.getLastPathSegment());
 
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while(!uriTask.isComplete());
-                Uri urlImage = uriTask.getResult();
-                if (urlImage == null ){
-                    Log.d("image url is ", "nulll");
-                    imageUrl ="";
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Recipe Uplading....");
+            //progressDialog.show();
+
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                    while (!uriTask.isComplete()) ;
+                    Uri urlImage = uriTask.getResult();
+                    if (urlImage == null) {
+                        Log.d("image url is ", "nulll");
+                        imageUrl = "";
+                    } else {
+                        imageUrl = urlImage.toString();
+
+                    }
+
+                    Log.d("image url is not null ", imageUrl);
+                    continueToIngredient();
+                    progressDialog.dismiss();
                 }
-                else{
-                    imageUrl = urlImage.toString();
-
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
                 }
-                Log.d("image url is not null ", imageUrl);
-                continueToIngredient();
-                progressDialog.dismiss();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                progressDialog.dismiss();
-            }
-        });
-
+            });
+        }catch (Exception e){
+            imageUrl = "";
+            continueToIngredient();
+        }
     }
 
 
