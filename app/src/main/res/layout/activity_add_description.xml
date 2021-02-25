@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Descriptions"
+        android:text="Description"
         android:textSize="30sp"
         android:textStyle="bold"
         />

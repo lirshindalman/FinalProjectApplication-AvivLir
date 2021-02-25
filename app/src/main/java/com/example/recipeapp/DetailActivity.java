@@ -1,6 +1,7 @@
 package com.example.recipeapp;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class DetailActivity extends AppCompatActivity {
     private ListView descriptionList;
     private TextView tv;
     private int timer;
+    MediaPlayer mp;
     private CountDownTimer countTimer;
     ArrayList<String> firstListItems =new ArrayList<String>();
     ArrayList<String> secondListItems =new ArrayList<String>();
@@ -122,7 +124,20 @@ public class DetailActivity extends AppCompatActivity {
 
             public void onFinish() {
                 tv.setText("Completed");
+                playSound(R.raw.timer_snd);
             }
         }.start();
+    }
+
+    private void playSound(int rawId) {
+        mp = MediaPlayer.create(this, rawId);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.reset();
+                mp.release();
+            }
+        });
+        mp.start();
     }
 }
