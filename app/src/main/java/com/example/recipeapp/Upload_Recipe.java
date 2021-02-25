@@ -121,6 +121,7 @@ public class Upload_Recipe extends AppCompatActivity {
 //    }
 
     public void nextBtn(View view) {
+
         uploadImage();
     }
 
