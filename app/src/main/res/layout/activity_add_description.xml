@@ -23,7 +23,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/timerText"
+            android:id="@+id/add_TXT_timer"
             android:hint="Enter time (minutes)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/descriptionText"
+            android:id="@+id/add_TXT_description"
             android:hint="Enter Instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

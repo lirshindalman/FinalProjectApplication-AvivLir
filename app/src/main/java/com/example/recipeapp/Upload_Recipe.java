@@ -1,6 +1,5 @@
 package com.example.recipeapp;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -10,10 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,24 +22,25 @@ import com.google.firebase.storage.UploadTask;
 
 public class Upload_Recipe extends AppCompatActivity {
 
-    ImageView recipeImage;
+    ImageView upload_IMG_recipe;
     Uri uri;
-    EditText txt_name;
+    EditText upload_TXT_name;
     String imageUrl="";
-    private Button switch_activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload__recipe);
+        findViews();
 
-        recipeImage = (ImageView)findViewById(R.id.iv_foodImage);
-        txt_name = (EditText)findViewById(R.id.txt_recipe_name);
 
     }
+    public void findViews(){
+        upload_IMG_recipe = (ImageView)findViewById(R.id.upload_IMG_recipe);
+        upload_TXT_name = (EditText)findViewById(R.id.upload_TXT_name);
+    }
 
-    public void btnSelectImage(View view) {
-
+        public void btnSelectImage(View view) {
         Intent photoPicker = new Intent(Intent.ACTION_PICK);
         photoPicker.setType("image/*");
         startActivityForResult(photoPicker,1);
@@ -53,14 +51,14 @@ public class Upload_Recipe extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK){
-
             uri = data.getData();
-            recipeImage.setImageURI(uri);
+            upload_IMG_recipe.setImageURI(uri);
 
         }
         else Toast.makeText(this, "You haven't picked image", Toast.LENGTH_SHORT).show();
     }
 
+    //Upload image to storage
     public void uploadImage(){
         try {
             imageUrl = "";
@@ -99,36 +97,20 @@ public class Upload_Recipe extends AppCompatActivity {
             });
         }catch (Exception e){
             imageUrl = "";
-//            TextView alert = (EditText) findViewById(R.id.descriptionText);
-//            showAlertDialogButtonClicked(alert);
             continueToIngredient();
         }
     }
 
-//    public void showAlertDialogButtonClicked(View view) {
-//
-//        // setup the alert builder
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("My title");
-//        builder.setMessage("This is my message.");
-//
-//        // add a button
-//        builder.setPositiveButton("OK", null);
-//
-//        // create and show the alert dialog
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//    }
 
     public void nextBtn(View view) {
-
         uploadImage();
     }
 
+    //Move to next activity
     public void continueToIngredient(){
         Intent addIngredient = new Intent(this, AddIngredientActivity.class);
-        addIngredient.putExtra(Constants.FOOD_DATA_NAME, txt_name.getText().toString());
-        Log.d("name is: ", txt_name.getText().toString());
+        addIngredient.putExtra(Constants.FOOD_DATA_NAME, upload_TXT_name.getText().toString());
+        Log.d("name is: ", upload_TXT_name.getText().toString());
         addIngredient.putExtra(Constants.FOOD_DATA_IMAGE_URL, imageUrl);
         Log.d("image url is: ", imageUrl);
         startActivity(addIngredient);

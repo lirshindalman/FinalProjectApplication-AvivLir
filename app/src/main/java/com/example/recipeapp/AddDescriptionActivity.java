@@ -22,43 +22,44 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddDescriptionActivity extends ListActivity {
-    private EditText descriptionText;
-    private EditText timerText;
+    private EditText add_TXT_description;
+    private EditText add_TXT_timer;
     private FoodData foodData;
     private int timer = 0 ;
 
-    //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
     ArrayList<String> descriptionList=new ArrayList<String>();
-
-    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<String> adapter;
 
-
-
     @Override
+
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_add_description);
+        findViews();
 
-        descriptionText = (EditText) findViewById(R.id.descriptionText);
-        timerText = (EditText) findViewById(R.id.timerText);
+        //list view
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 descriptionList);
         setListAdapter(adapter);
     }
+    public void findViews(){
+        add_TXT_description = (EditText) findViewById(R.id.add_TXT_description);
+        add_TXT_timer = (EditText) findViewById(R.id.add_TXT_timer);
+    }
 
-    //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
+
+        //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v) {
-        descriptionList.add("" + descriptionText.getText());
-        descriptionText.setText("");
+        descriptionList.add("" + add_TXT_description.getText());
+        add_TXT_description.setText("");
         adapter.notifyDataSetChanged();
     }
 
     public void addTimer(View v) {
-        Log.d("timer is: ", String.valueOf(timerText.getText()));
-        timer = Integer.parseInt(""+timerText.getText()) * 60;
-        timerText.setText("Timer set to "+timerText.getText()+" minutes");
+        Log.d("timer is: ", String.valueOf(add_TXT_timer.getText()));
+        timer = Integer.parseInt(""+ add_TXT_timer.getText()) * 60;
+        add_TXT_timer.setText("Timer set to "+ add_TXT_timer.getText()+" minutes");
         adapter.notifyDataSetChanged();
     }
 
@@ -66,6 +67,8 @@ public class AddDescriptionActivity extends ListActivity {
         if(descriptionList.isEmpty()){
             descriptionList.add("");
         }
+
+        //Getting food data info
         Log.d("descriptionList: ", descriptionList.toString());
         ArrayList<String> ingredients;
         ingredients = getIntent().getStringArrayListExtra(Constants.FOOD_DATA_INGRIDIENTS);
@@ -75,6 +78,7 @@ public class AddDescriptionActivity extends ListActivity {
         String itemImageUrl = getIntent().getStringExtra(Constants.FOOD_DATA_IMAGE_URL);
         Log.d("itemImage: ", itemImageUrl);
 
+        //create food data object and transfer it to Detail Activity
         foodData= new FoodData(itemName ,itemImageUrl,ingredients, descriptionList, timer);
         Gson gson = new Gson();
         String myJson = gson.toJson(foodData);
@@ -84,8 +88,8 @@ public class AddDescriptionActivity extends ListActivity {
         startActivity(new Intent(AddDescriptionActivity.this, MainActivity.class));
     }
 
+    //Upload recipe to firebase
     public void uploadRecipe(){
-
         String myCurrentDateTime = DateFormat.getDateTimeInstance()
                 .format(Calendar.getInstance().getTime());
 
@@ -95,9 +99,7 @@ public class AddDescriptionActivity extends ListActivity {
             public void onComplete(@NonNull Task<Void> task) {
 
                 if(task.isSuccessful()){
-
                     Toast.makeText(AddDescriptionActivity.this, "Recipe Uploaded", Toast.LENGTH_SHORT).show();
-
                     finish();
 
                 }

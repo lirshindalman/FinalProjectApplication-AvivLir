@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.bumptech.glide.Glide;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,16 +21,12 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
-    private TextView RecipeName;
-    private ImageView foodImage;
+    private TextView detail_TXT_name, detail_TXT_timer;
     private String key="";
     private String imageUrl="";
-    private ListView ingredientList;
-    private ListView descriptionList;
-    private TextView tv;
+    private ListView detail_LST_ingredient, detail_LST_description;
     private int timer;
     MediaPlayer mp;
-    private CountDownTimer countTimer;
     ArrayList<String> firstListItems =new ArrayList<String>();
     ArrayList<String> secondListItems =new ArrayList<String>();
 
@@ -41,49 +36,92 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        ingredientList = (ListView) findViewById(R.id.firstList);
-        descriptionList = (ListView) findViewById(R.id.secondList);
-        RecipeName = (TextView) findViewById(R.id.txtRecipeName);
-        tv = (TextView) findViewById(R.id.txtTimer);
-        //foodImage = (ImageView)findViewById(R.id.ivImage2);
+        findViews();
         Bundle mBundle = getIntent().getExtras();
 
         if(mBundle!=null){
 
             key = mBundle.getString("keyValue");
             imageUrl = mBundle.getString("Image");
-            RecipeName.setText(mBundle.getString("RecipeName"));
-            //foodImage.setImageResource(mBundle.getInt("Image"));
+            detail_TXT_name.setText(mBundle.getString("RecipeName"));
             firstListItems = mBundle.getStringArrayList("listIngredient");
             secondListItems = mBundle.getStringArrayList("listDescription");
             timer =  mBundle.getInt("timer");
 
+            //Ingredient list view
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     this,
                     android.R.layout.simple_list_item_1,
                     firstListItems);
 
-            ingredientList.setAdapter(arrayAdapter);
+            detail_LST_ingredient.setAdapter(arrayAdapter);
 
-
+            //Description list view
             ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(
                     this,
                     android.R.layout.simple_list_item_1,
                     secondListItems);
 
-            descriptionList.setAdapter(arrayAdapter2);
+            detail_LST_description.setAdapter(arrayAdapter2);
+
+            //Show timer before start it
             int millisUntilFinished = timer * 1000;
             int seconds = (int) (millisUntilFinished / 1000);
             int minutes = seconds / 60;
             seconds = seconds % 60;
-            tv.setText("TIME : " + String.format("%02d", minutes)
+            detail_TXT_timer.setText("TIME : " + String.format("%02d", minutes)
                     + ":" + String.format("%02d", seconds));
         }
 
     }
 
-    public void btnDeleteRecipe(View view) {
+    public void findViews(){
+        detail_LST_ingredient = (ListView) findViewById(R.id.detail_LST_ingredient);
+        detail_LST_description = (ListView) findViewById(R.id.detail_LST_description);
+        detail_TXT_name = (TextView) findViewById(R.id.detail_TXT_name);
+        detail_TXT_timer = (TextView) findViewById(R.id.detail_TXT_timer);
+    }
 
+    public void startTimer(View view){
+        Log.d("timer is :", ""+timer);
+        reverseTimer(timer);
+    }
+
+
+
+    public void reverseTimer(int Seconds){
+        new CountDownTimer(Seconds* 1000+1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                detail_TXT_timer.setText("TIME : " + String.format("%02d", minutes)
+                        + ":" + String.format("%02d", seconds));
+            }
+
+            public void onFinish() {
+                detail_TXT_timer.setText("Completed");
+                playSound(R.raw.timer_snd);
+            }
+        }.start();
+    }
+
+    //Play sound when timer is over
+    private void playSound(int rawId) {
+        mp = MediaPlayer.create(this, rawId);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.reset();
+                mp.release();
+            }
+        });
+        mp.start();
+    }
+
+    //Delete recipe from database
+    public void btnDeleteRecipe(View view) {
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipe");
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -101,43 +139,5 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    public void startTimer(View view){
-        Log.d("timer is :", ""+timer);
-        reverseTimer(timer);
-    }
-
-
-
-    public void reverseTimer(int Seconds){
-
-        new CountDownTimer(Seconds* 1000+1000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                int seconds = (int) (millisUntilFinished / 1000);
-                int minutes = seconds / 60;
-                seconds = seconds % 60;
-                tv.setText("TIME : " + String.format("%02d", minutes)
-                        + ":" + String.format("%02d", seconds));
-            }
-
-            public void onFinish() {
-                tv.setText("Completed");
-                playSound(R.raw.timer_snd);
-            }
-        }.start();
-    }
-
-    private void playSound(int rawId) {
-        mp = MediaPlayer.create(this, rawId);
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mp.reset();
-                mp.release();
-            }
-        });
-        mp.start();
     }
 }

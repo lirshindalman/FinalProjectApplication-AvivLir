@@ -23,7 +23,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/ingredientText"
+            android:id="@+id/add_TXT_ingredient"
             android:hint="Enter Ingredient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

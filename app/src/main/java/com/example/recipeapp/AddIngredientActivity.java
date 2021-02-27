@@ -3,7 +3,6 @@
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,15 +12,9 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 public class AddIngredientActivity extends ListActivity {
-    private EditText ingredientText;
-
-
-    //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
+    private EditText add_TXT_ingredient;
     ArrayList<String> ingredientList=new ArrayList<String>();
-
-    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<String> adapter;
-
 
 
     @Override
@@ -29,8 +22,8 @@ public class AddIngredientActivity extends ListActivity {
         super.onCreate(icicle);
         setContentView(R.layout.activity_add_ingredient);
 
-        ingredientText = (EditText) findViewById(R.id.ingredientText);
-
+        //list view
+        add_TXT_ingredient = (EditText) findViewById(R.id.add_TXT_ingredient);
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 ingredientList);
@@ -39,11 +32,12 @@ public class AddIngredientActivity extends ListActivity {
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v) {
-        ingredientList.add("" + ingredientText.getText());
-        ingredientText.setText("");
+        ingredientList.add("" + add_TXT_ingredient.getText());
+        add_TXT_ingredient.setText("");
         adapter.notifyDataSetChanged();
     }
 
+    //transfer info to the next activity
     public void nextBtn(View v){
         if(ingredientList.isEmpty()){
             ingredientList.add("");

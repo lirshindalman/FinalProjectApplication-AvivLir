@@ -24,7 +24,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:id="@+id/ivImage"
+                android:id="@+id/adapter_IMG_recipe"
                 android:layout_weight="4"
                 android:scaleType="centerCrop"
                 android:src="@drawable/image"
@@ -43,7 +43,7 @@
                     android:text="Title"
                     android:textSize="25sp"
                     android:maxLines="1"
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/adapter_TXT_title"
 
                         />
             </LinearLayout>

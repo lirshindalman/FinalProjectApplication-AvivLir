@@ -24,10 +24,8 @@ public class SplashActivity extends AppCompatActivity {
 
     private ImageView splash_IMG_imageDisplay;
     private TextView splash_LBL_title;
-
     private Animation splash_top_animation;
     private Animation splash_bottom_Animation;
-
     private final int SPLASH_SCREEN = 4000;
 
     @Override

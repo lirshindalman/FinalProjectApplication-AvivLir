@@ -25,43 +25,36 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     List<FoodData> myFoodList;
-    FoodData mFoodData;
     ProgressDialog progressDialog;
     MyAdapter myAdapter;
-    EditText txt_Search;
+    EditText main_TXT_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        findViews();
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,1);
         mRecyclerView.setLayoutManager(gridLayoutManager);
-
-        txt_Search = (EditText)findViewById(R.id.txt_searchtext);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Items ....");
 
-
         myFoodList = new ArrayList<>();
-
         myAdapter  = new MyAdapter(MainActivity.this,myFoodList);
         mRecyclerView.setAdapter(myAdapter);
 
-
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Recipe");
 
+        //Show the message until recipes uploaded from database
         progressDialog.show();
         ValueEventListener eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 myFoodList.clear();
-
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
-
                     FoodData foodData = itemSnapshot.getValue(FoodData.class);
                     foodData.setKey(itemSnapshot.getKey());
                     myFoodList.add(foodData);
@@ -80,42 +73,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        txt_Search.addTextChangedListener(new TextWatcher() {
+        main_TXT_search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
                 filter(s.toString());
-
             }
         });
 
+    }
 
+    public void findViews(){
+        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        main_TXT_search = (EditText)findViewById(R.id.main_TXT_search);
 
     }
     private void filter(String text) {
-
         ArrayList<FoodData> filterList = new ArrayList<>();
-
         for(FoodData item: myFoodList){
-
             if(item.getItemName().toLowerCase().contains(text.toLowerCase())){
-
                 filterList.add(item);
-
             }
-
         }
-
         myAdapter.filteredList(filterList);
 
     }

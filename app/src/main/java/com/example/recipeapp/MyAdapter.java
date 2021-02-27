@@ -32,54 +32,39 @@ public class MyAdapter extends RecyclerView.Adapter<FoodViewHolder>{
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View mView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_row_item,viewGroup,false);
-
         return new FoodViewHolder(mView);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull final FoodViewHolder foodViewHolder, int i) {
-
-
         Glide.with(mContext)
                 .load(myFoodList.get(i).getItemImage())
-                .into(foodViewHolder.imageView);
+                .into(foodViewHolder.adapter_IMG_recipe);
 
-        // foodViewHolder.imageView.setImageResource(myFoodList.get(i).getItemImage());
-        foodViewHolder.mTitle.setText(myFoodList.get(i).getItemName());
-        //foodViewHolder.mDescription.setText(myFoodList.get(i).getItemDescription());
-       // foodViewHolder.mPrice.setText(myFoodList.get(i).getItemPrice());
-
+        foodViewHolder.adapter_TXT_title.setText(myFoodList.get(i).getItemName());
         foodViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(mContext,DetailActivity.class);
                 intent.putExtra("Image",myFoodList.get(foodViewHolder.getAdapterPosition()).getItemImage());
-               // intent.putExtra("Description",myFoodList.get(foodViewHolder.getAdapterPosition()).getItemDescription());
                 intent.putExtra("RecipeName",myFoodList.get(foodViewHolder.getAdapterPosition()).getItemName());
-                //intent.putExtra("price",myFoodList.get(foodViewHolder.getAdapterPosition()).getItemPrice());
                 intent.putExtra("keyValue",myFoodList.get(foodViewHolder.getAdapterPosition()).getKey());
                 intent.putExtra("listIngredient",myFoodList.get(foodViewHolder.getAdapterPosition()).getIngredient());
                 intent.putExtra("listDescription",myFoodList.get(foodViewHolder.getAdapterPosition()).getDescription());
                 intent.putExtra("timer",myFoodList.get(foodViewHolder.getAdapterPosition()).getTimer());
-
-
                 mContext.startActivity(intent);
 
 
             }
         });
-
-
         setAnimation(foodViewHolder.itemView,i);
 
     }
 
     public void setAnimation(View viewToAnimate, int position ){
-
         if(position> lastPosition){
-
             ScaleAnimation animation = new ScaleAnimation(0.0f,1.0f,0.0f,1.0f,
                     Animation.RELATIVE_TO_SELF,0.5f,
                     Animation.RELATIVE_TO_SELF,0.5f);
@@ -87,10 +72,7 @@ public class MyAdapter extends RecyclerView.Adapter<FoodViewHolder>{
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
 
-
         }
-
-
 
     }
 
@@ -106,18 +88,21 @@ public class MyAdapter extends RecyclerView.Adapter<FoodViewHolder>{
 }
 
 class FoodViewHolder extends RecyclerView.ViewHolder{
-
-
-    ImageView imageView;
-    TextView mTitle,mDescription,mPrice;
+    ImageView adapter_IMG_recipe;
+    TextView adapter_TXT_title;
     CardView mCardView;
 
 
     public FoodViewHolder( View itemView) {
         super(itemView);
+        findViews();
 
-        imageView = itemView.findViewById(R.id.ivImage);
-        mTitle = itemView.findViewById(R.id.tvTitle);
+    }
+
+    public void findViews(){
+        adapter_IMG_recipe = itemView.findViewById(R.id.adapter_IMG_recipe);
+        adapter_TXT_title = itemView.findViewById(R.id.adapter_TXT_title);
         mCardView = itemView.findViewById(R.id.myCardView);
     }
-}
+
+    }

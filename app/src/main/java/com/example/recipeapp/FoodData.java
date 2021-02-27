@@ -11,8 +11,7 @@ public class FoodData {
     private String key;
     private int timer;
 
-    public FoodData() {
-    }
+
     public FoodData(String itemName, String itemImage,ArrayList<String> ingredients,ArrayList<String> description, int timer) {
         this.itemName = itemName;
         this.itemImage = itemImage;
