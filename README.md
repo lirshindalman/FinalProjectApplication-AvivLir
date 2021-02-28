@@ -5,8 +5,7 @@
 The Recipe App is an Android app made using Android Studio. It is created so that users can create new recipe, add picture to the recipe and use timer.
 
 ## Images
-| ![](https://user-images.githubusercontent.com/50097337/109419984-d0541400-79d8-11eb-94cc-73dd41dc1b57.png) | ![](https://user-images.githubusercontent.com/50097337/109420040-13ae8280-79d9-11eb-8001-89d7f53ea1f7.png) |![](https://user-images.githubusercontent.com/50097337/109426206-0a331380-79f5-11eb-83a5-a1db01457319.png)
-
+| ![](https://user-images.githubusercontent.com/50097337/109419984-d0541400-79d8-11eb-94cc-73dd41dc1b57.png) | ![](https://user-images.githubusercontent.com/50097337/109420040-13ae8280-79d9-11eb-8001-89d7f53ea1f7.png) |![](https://user-images.githubusercontent.com/50097337/109426206-0a331380-79f5-11eb-83a5-a1db01457319.png) |
 |:---:|:---:|:---:|
 
 | The splash screen  | Loading recipes from database| main screen - all recipes|
