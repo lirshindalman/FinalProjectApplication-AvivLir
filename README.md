@@ -1,6 +1,6 @@
 # FinalProjectApplication-AvivLir
 
-![main screen](https://github.com/aza0092/Cooking-Recipe-Android-App/blob/master/media/splash%20screen.png)
+![main screen](https://user-images.githubusercontent.com/50097337/109419984-d0541400-79d8-11eb-94cc-73dd41dc1b57.png)
 
 
 ## Description
