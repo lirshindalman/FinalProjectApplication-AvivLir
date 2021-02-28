@@ -22,16 +22,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddDescriptionActivity extends ListActivity {
-    private EditText add_TXT_description;
-    private EditText add_TXT_timer;
+    private EditText add_TXT_description, add_TXT_timer;
     private FoodData foodData;
     private int timer = 0 ;
-
     ArrayList<String> descriptionList=new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
     @Override
-
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_add_description);

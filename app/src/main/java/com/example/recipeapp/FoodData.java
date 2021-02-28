@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public class FoodData {
 
-    private String itemName;
-    private ArrayList<String> description;
-    private ArrayList<String> ingredient;
-    private String itemImage;
-    private String key;
+    private String itemName, itemImage, key;
+    private ArrayList<String> description, ingredient;
     private int timer;
 
-
+    public FoodData() {
+    }
     public FoodData(String itemName, String itemImage,ArrayList<String> ingredients,ArrayList<String> description, int timer) {
         this.itemName = itemName;
         this.itemImage = itemImage;
